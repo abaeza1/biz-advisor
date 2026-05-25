@@ -111,16 +111,15 @@ export default function SmallBizAdvisor() {
     setLoading(true);
 
     try {
-      const res = await fetch("https://api.anthropic.com/v1/messages", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({
-          model: "claude-sonnet-4-20250514",
-          max_tokens: 1000,
-          system: SYSTEM_PROMPT,
-          messages: newMessages,
-        }),
-      });
+          const res = await fetch("/api/chat", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          messages: newMessages,
+        }),
+      });
       const data = await res.json();
       const reply = data.content?.[0]?.text || "Sorry, I couldn't get a response. Please try again.";
       setMessages([...newMessages, { role: "assistant", content: reply }]);
