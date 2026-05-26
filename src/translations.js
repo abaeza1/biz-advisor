@@ -1,12 +1,15 @@
 // translations.js — English & Spanish content for BizAdvisor
+// Each category has:
+//   essentials: beginner/foundational FAQs
+//   advanced: growth/scaling FAQs
 
 export const translations = {
   en: {
-    // ── Nav & Global ──
     appName: "BizAdvisor",
-    nav: { home: "Home", askAI: "Ask AI" },
-
-    // ── Hero ──
+    nav: {
+      home: "Home", askAI: "Ask AI",
+      templates: "Templates", contact: "Contact", search: "Search...",
+    },
     hero: {
       badge: "Small Business Intelligence",
       title1: "Every answer your",
@@ -15,34 +18,60 @@ export const translations = {
       btnAI: "Ask the AI Advisor →",
       btnBrowse: "Browse Topics",
     },
-
-    // ── Quick Questions ──
-    popularLabel: "Popular questions →",
-    popularQuestions: [
-      "How do I price my services?",
-      "Should I form an LLC?",
-      "How do self-employment taxes work?",
-      "When should I hire my first employee?",
-      "How do I find my first clients?",
-      "What's the difference between profit and cash flow?",
-    ],
-
-    // ── Sections ──
+    tiers: {
+      essentials: "Business Essentials",
+      essentialsSub: "Foundational knowledge every business owner needs",
+      advanced: "Business Growth",
+      advancedSub: "Strategies for scaling, optimizing, and expanding",
+    },
+    popularLabel: "Popular questions",
     browseTitle: "Browse by Topic",
     faqCount: (n) => `${n} FAQs`,
-    followUp: "Ask a follow-up question →",
+    followUp: "Ask a follow-up →",
     noQuestion: "Don't see your question?",
     askAdvisor: "Ask the AI Advisor →",
-
-    // ── CTA Strip ──
     ctaTitle: "Have a specific question?",
     ctaSub: "Our AI advisor is trained on small business best practices",
     ctaBtn: "Ask Now →",
-
-    // ── Breadcrumb ──
     breadHome: "Home",
-
-    // ── Chat ──
+    emailCapture: {
+      title: "Get the Free Small Business Starter Guide",
+      sub: "A practical checklist covering legal setup, finances, marketing, and your first 90 days.",
+      placeholder: "your@email.com",
+      btn: "Send Me the Guide →",
+      note: "No spam. Unsubscribe anytime.",
+    },
+    contact: {
+      title: "Contact Us",
+      sub: "Have a question, suggestion, or partnership inquiry? We'd love to hear from you.",
+      name: "Your Name",
+      email: "Your Email",
+      subject: "Subject",
+      message: "Your Message",
+      btn: "Send Message →",
+      success: "Message sent! We'll get back to you within 1–2 business days.",
+      error: "Something went wrong. Please try again.",
+      subjectOptions: [
+        "General Question",
+        "Template Request",
+        "Partnership Inquiry",
+        "Report an Issue",
+        "Other",
+      ],
+    },
+    privacy: {
+      title: "Privacy Policy",
+      lastUpdated: "Last updated: May 2026",
+    },
+    footer: {
+      tagline: "Practical business guidance for entrepreneurs at every stage.",
+      sections: {
+        product: { title: "Product", links: ["Home", "Ask AI", "Templates", "Contact"] },
+        topics: { title: "Topics", links: ["Finance & Money", "Legal & Structure", "Marketing & Sales", "Operations", "Strategy & Growth", "Taxes & Accounting"] },
+        legal: { title: "Legal", links: ["Privacy Policy", "Terms of Use"] },
+      },
+      copyright: `© ${new Date().getFullYear()} BizAdvisor. All rights reserved.`,
+    },
     chat: {
       name: "BizAdvisor AI",
       status: "Online · Small Business Expert",
@@ -55,202 +84,285 @@ export const translations = {
         "Do I really need an LLC?",
         "How do I handle a client who won't pay?",
       ],
-      systemPrompt: `You are a knowledgeable, practical small business advisor. You give clear, actionable advice to entrepreneurs and small business owners. Your answers are concise but complete (2-4 short paragraphs max), practical and specific, honest about risks and tradeoffs, written in plain language without jargon, and encouraging but realistic. Focus areas: finance, legal structure, marketing, operations, strategy, and mindset. Always prioritize the most actionable insight first. Respond in English.`,
+      systemPrompt: `You are a knowledgeable, practical small business advisor. You give clear, actionable advice to entrepreneurs and small business owners. Your answers are concise but complete (2-4 short paragraphs max), practical and specific, honest about risks and tradeoffs, written in plain language without jargon, and encouraging but realistic. Focus areas: finance, legal structure, marketing, operations, strategy, taxes, hiring, e-commerce, and mindset. Always prioritize the most actionable insight first. Respond in English.`,
     },
 
-    // ── Categories ──
     categories: [
+      // ── ESSENTIALS ──────────────────────────────────────────
       {
-        id: "finance",
-        icon: "◈",
-        label: "Finance & Money",
-        color: "#D4A843",
-        bg: "#1A140A",
+        id: "finance", tier: "essentials",
+        icon: "◈", label: "Finance & Money", color: "#D4A843", bg: "#1A140A",
         desc: "Pricing, cash flow, taxes, profit",
-        faqs: [
-          {
-            q: "How much money do I need to start my business?",
-            a: "Service businesses (bookkeeping, consulting) can launch under $500. Product businesses typically need $2,000–$10,000+ for inventory and setup. List every expense for your first 90 days and add a 20% buffer for surprises. The key is knowing your break-even point before you spend anything.",
-          },
-          {
-            q: "What's the difference between revenue, profit, and cash flow?",
-            a: "Revenue = total money coming in. Profit = revenue minus all expenses. Cash flow = the actual timing of money moving in and out of your account. A business can be profitable on paper but cash-flow negative if clients pay late. This is why profitable businesses sometimes run out of money.",
-          },
-          {
-            q: "How do self-employment taxes work?",
-            a: "Self-employed individuals pay both the employee AND employer portions of Social Security and Medicare — totaling 15.3% on net income, plus federal income tax. Set aside 25–30% of every payment you receive into a dedicated savings account. Pay quarterly estimated taxes (April, June, September, January) to avoid IRS penalties.",
-          },
-          {
-            q: "How do I price my service or product?",
-            a: "Calculate all costs (materials, time, overhead, software) then add your desired margin. Research what competitors charge. Consider value-based pricing — what is the result worth to your client? Most beginners underprice. If you're fully booked, that's a signal to raise prices. Review pricing every 6 months.",
-          },
-          {
-            q: "What business expenses can I deduct?",
-            a: "Common deductions include: home office, business software, phone/internet (business portion), equipment, professional development, advertising, business meals (50%), vehicle use, and professional services. Keep receipts for everything. A good accounting system pays for itself in tax savings alone.",
-          },
+        essentials: [
+          { q: "How much money do I need to start my business?", a: "Service businesses (bookkeeping, consulting) can launch under $500. Product businesses typically need $2,000–$10,000+ for inventory and setup. List every expense for your first 90 days and add a 20% buffer for surprises. Know your break-even point before you spend anything." },
+          { q: "What's the difference between revenue, profit, and cash flow?", a: "Revenue = total money coming in. Profit = revenue minus all expenses. Cash flow = the actual timing of money moving in and out of your account. A business can be profitable on paper but cash-flow negative if clients pay late. This is why profitable businesses sometimes run out of money." },
+          { q: "How do self-employment taxes work?", a: "Self-employed individuals pay both the employee AND employer portions of Social Security and Medicare — totaling 15.3% on net income, plus federal income tax. Set aside 25–30% of every payment you receive. Pay quarterly estimated taxes (April, June, September, January) to avoid IRS penalties." },
+          { q: "How do I price my service or product?", a: "Calculate all costs then add your desired margin. Research competitors. Consider value-based pricing — what is the result worth to your client? Most beginners underprice. If you're fully booked, raise prices. Review every 6 months." },
+          { q: "What business expenses can I deduct?", a: "Common deductions: home office, business software, phone/internet (business portion), equipment, professional development, advertising, business meals (50%), vehicle use, and professional services. Keep receipts for everything." },
+          { q: "How do I separate personal and business finances?", a: "Open a dedicated business checking account and business credit card immediately. Pay yourself a defined salary or owner's draw. Never pay personal bills from the business account. This is critical for taxes, legal protection, and understanding true profitability." },
+        ],
+        advanced: [
+          { q: "What is a P&L statement and how do I read one?", a: "A Profit & Loss (P&L) statement summarizes your revenues, costs, and expenses over a period. Top line is revenue. Subtract cost of goods sold to get gross profit. Subtract operating expenses to get operating income. Subtract taxes and interest to get net profit. Review monthly — it tells you exactly where your money goes." },
+          { q: "When should I reinvest profits vs. pay myself more?", a: "Pay yourself a sustainable amount first, even if small. Then reinvest a defined % of remaining profit (typically 30–50%). Never reinvest 100% — you'll burn out. As revenue grows steadily for 3+ months, increase your pay before aggressively expanding." },
+          { q: "What is my break-even point and why does it matter?", a: "Break-even = Fixed Costs ÷ (Price per unit – Variable cost per unit). Example: $2,000/month fixed costs, $100 price, $40 variable cost = need to sell 34 units/month to break even. Every business owner should know this number before spending on growth." },
+          { q: "How do I manage cash flow during slow months?", a: "Build a 3-month cash reserve. Create a 12-month cash flow forecast. Require deposits upfront from clients. Shorten payment terms. Consider a business line of credit before you need it — banks lend to stable businesses, not desperate ones. Seasonal businesses should save aggressively during busy months." },
+          { q: "What is the difference between markup and margin?", a: "Markup = profit as % of cost. Margin = profit as % of selling price. Item costs $60, sells for $100: Markup = 67%, Margin = 40%. Margin is more useful for business decisions. A 50% markup is NOT the same as a 50% margin — confusing these leads to serious underpricing." },
         ],
       },
       {
-        id: "legal",
-        icon: "⬡",
-        label: "Legal & Structure",
-        color: "#5B8FA8",
-        bg: "#080F13",
+        id: "legal", tier: "essentials",
+        icon: "⬡", label: "Legal & Structure", color: "#5B8FA8", bg: "#080F13",
         desc: "LLC, contracts, licenses, protection",
-        faqs: [
-          {
-            q: "Should I form an LLC?",
-            a: "For most small businesses: yes. An LLC costs $50–$500 to form and protects your personal assets (house, car, savings) from business debts and lawsuits. A sole proprietorship is simpler but leaves you personally liable. Form the LLC before you start taking on clients. It also adds credibility.",
-          },
-          {
-            q: "What's the difference between LLC and S-Corp?",
-            a: "An LLC is a legal structure. An S-Corp is a tax election you can apply to an LLC. The S-Corp advantage: you pay yourself a reasonable salary and take remaining profit as distributions — distributions avoid the 15.3% self-employment tax. This strategy typically saves money when your net profit exceeds ~$60,000/year.",
-          },
-          {
-            q: "What contracts do I actually need?",
-            a: "At minimum: a client service agreement (scope, payment, deadlines, cancellation policy) for every client. If you hire help: an independent contractor agreement. For sensitive business info: an NDA. Simple, plain-language templates work fine — you don't need a lawyer for basic contracts. Get every agreement signed before starting work.",
-          },
-          {
-            q: "What insurance does a small business need?",
-            a: "General liability ($500–$1,500/year) covers property damage or injury claims. Professional liability / E&O ($500–$2,000/year) covers mistakes in your professional services — essential for bookkeepers, consultants, and designers. If you have employees, workers' comp is required in most states. Start with general liability at minimum.",
-          },
-          {
-            q: "Do I need a business license?",
-            a: "Most cities and counties require a general business license ($25–$100/year). Some industries require additional licenses (contractors, food service, healthcare, financial services). Check your city/county website and your state's business portal. If working from home, also check local zoning laws.",
-          },
+        essentials: [
+          { q: "Should I form an LLC?", a: "For most small businesses: yes. An LLC costs $50–$500 to form and protects your personal assets from business debts and lawsuits. A sole proprietorship is simpler but leaves you personally liable. Form the LLC before taking on clients." },
+          { q: "What contracts do I actually need?", a: "At minimum: a client service agreement (scope, payment, deadlines, cancellation policy). If you hire help: an independent contractor agreement. For sensitive info: an NDA. Get every agreement signed before starting work." },
+          { q: "What insurance does a small business need?", a: "General liability ($500–$1,500/year) covers property damage or injury. Professional liability/E&O ($500–$2,000/year) covers mistakes in your services. If you have employees, workers' comp is required in most states. Start with general liability at minimum." },
+          { q: "Do I need a business license?", a: "Most cities and counties require a general business license ($25–$100/year). Some industries require additional licenses. Check your city/county website and your state's business portal. If working from home, check local zoning laws." },
+          { q: "What is the difference between a trademark, copyright, and patent?", a: "Trademark: protects brand names, logos, slogans. Copyright: automatically protects original creative work (writing, art, music). Patent: protects inventions and processes, requires filing. For most small businesses, a trademark registration ($250–$350) is the most practical first IP protection." },
+        ],
+        advanced: [
+          { q: "What's the difference between LLC and S-Corp?", a: "An LLC is a legal structure. An S-Corp is a tax election you can apply to an LLC. S-Corp advantage: you pay yourself a reasonable salary and take remaining profit as distributions — distributions avoid the 15.3% self-employment tax. Typically saves money when net profit exceeds ~$60,000/year." },
+          { q: "When do I need a partnership agreement?", a: "The moment you have a business partner — even a trusted friend or family member. Cover: ownership percentages, decision-making authority, profit splits, what happens if one partner wants to leave, and how disputes are resolved. Most business partnerships that fail do so because this wasn't written down early." },
+          { q: "How do I protect a business idea before pitching it?", a: "Have anyone who hears your idea sign an NDA before the meeting. Document everything with timestamps (emails, notes, design files). For software/tech, file a provisional patent ($320) to establish a priority date while you develop further. For brands, file a trademark early." },
+          { q: "What should I know about business contracts before signing?", a: "Read every clause — especially termination, liability, and IP ownership. Watch for: auto-renewal clauses, non-compete restrictions, indemnification clauses that expose you to unlimited liability, and 'work for hire' clauses that transfer ownership of your work. For contracts over $5,000, a one-hour attorney review is worth the cost." },
         ],
       },
       {
-        id: "marketing",
-        icon: "◇",
-        label: "Marketing & Sales",
-        color: "#C46A4E",
-        bg: "#130A08",
+        id: "marketing", tier: "essentials",
+        icon: "◇", label: "Marketing & Sales", color: "#C46A4E", bg: "#130A08",
         desc: "Clients, referrals, online presence",
-        faqs: [
-          {
-            q: "How do I find my first customers?",
-            a: "Your personal network is your fastest path. Tell everyone you know what you do and who you help. Post on LinkedIn and local Facebook groups. Offer a discounted or free first project to get a testimonial. Ask satisfied clients for referrals. Most first clients come from people you already know — don't skip this step to focus on ads.",
-          },
-          {
-            q: "Do I need a website right away?",
-            a: "Not necessarily. Many businesses get their first 10 clients without one. A LinkedIn profile or simple one-page site (Carrd, Squarespace — $10–$20/month) is enough to start. Focus on getting clients first, then invest in a professional website once you have revenue.",
-          },
-          {
-            q: "What is a niche and do I really need one?",
-            a: "A niche is a specific, defined market segment you focus on. Instead of 'bookkeeper,' you become 'bookkeeper for restaurants.' Niching makes marketing easier, makes you more referable, and lets you charge more as a specialist. Being everything to everyone means being nothing to no one.",
-          },
-          {
-            q: "How do I ask for referrals without feeling awkward?",
-            a: "Make it simple and specific: 'I'm looking to work with a few more clients like you — if you know any business owners who struggle with [problem], I'd love an introduction.' Most happy clients want to help but don't know you're looking. Ask once right after completing a successful project.",
-          },
-          {
-            q: "What's the difference between marketing and sales?",
-            a: "Marketing creates awareness and interest (content, social media, ads, SEO). Sales converts that interest into paying customers (conversations, proposals, follow-ups, closing). Most small business owners are decent at one and ignore the other. You need both.",
-          },
+        essentials: [
+          { q: "How do I find my first customers?", a: "Your personal network is your fastest path. Tell everyone you know what you do and who you help. Post on LinkedIn and local Facebook groups. Offer a discounted first project for a testimonial. Most first clients come from people you already know." },
+          { q: "Do I need a website right away?", a: "Not necessarily. Many businesses get their first 10 clients without one. A LinkedIn profile or simple one-page site ($10–$20/month) is enough to start. Focus on getting clients first, then invest in a professional website once you have revenue." },
+          { q: "What is a niche and why do I need one?", a: "A niche is a specific market segment you focus on. Instead of 'bookkeeper' you become 'bookkeeper for restaurants.' Niching makes marketing easier, makes you more referable, and lets you charge more as a specialist." },
+          { q: "How do I ask for referrals without feeling awkward?", a: "Be specific: 'I'm looking to work with more clients like you — if you know any [type] owners who struggle with [problem], I'd love an introduction.' Ask once right after completing a successful project, when satisfaction is highest." },
+          { q: "What's the difference between marketing and sales?", a: "Marketing creates awareness and interest. Sales converts that interest into paying customers. Most small business owners are decent at one and ignore the other. Great marketing with no follow-through loses clients. Great sales with no marketing means you're always hustling." },
+        ],
+        advanced: [
+          { q: "How do I build an email list and why does it matter?", a: "Start collecting emails from day one using Mailchimp or ConvertKit (free tiers). Offer something valuable in exchange (checklist, template, guide). Send a regular newsletter. An email list is the only audience you own — social media followers disappear if a platform changes its algorithm." },
+          { q: "What is a lead magnet and how do I create one?", a: "A lead magnet is a free resource you offer in exchange for an email address. Best performers: templates, checklists, calculators, short guides, or a mini email course. It should solve one specific problem immediately. A good lead magnet can convert 20–40% of visitors into email subscribers." },
+          { q: "How do I handle a negative review online?", a: "Respond publicly, calmly, and within 24 hours. Acknowledge their concern without admitting fault. Offer to resolve offline. Never argue publicly. One bad review surrounded by good ones rarely hurts you — a defensive response hurts you more than the review itself." },
+          { q: "When should I start running paid ads?", a: "Only after you've validated your offer organically (gotten paying clients without ads). Ads amplify what's already working — they don't fix a broken offer. Start with a small daily budget ($10–$20/day), test 3–5 different ad variations, and measure cost per lead before scaling." },
         ],
       },
       {
-        id: "operations",
-        icon: "◉",
-        label: "Operations",
-        color: "#6E9E6E",
-        bg: "#080F08",
+        id: "operations", tier: "essentials",
+        icon: "◉", label: "Operations", color: "#6E9E6E", bg: "#080F08",
         desc: "Hiring, tools, time, processes",
-        faqs: [
-          {
-            q: "When should I hire my first employee or contractor?",
-            a: "Hire when: you're turning down work due to capacity, you're spending 20%+ of your time on tasks someone else could do for $20–$30/hr, or a skill gap is costing you clients. Start with a part-time contractor before a full employee — lower risk, more flexibility.",
-          },
-          {
-            q: "What tools do I actually need to run a small business?",
-            a: "Essentials: accounting software (QuickBooks or Wave), invoicing tool, contract signing (DocuSign), and a calendar. Nice-to-have once you're growing: project management (Notion, Trello), CRM (HubSpot free), and scheduling (Calendly). Add tools only when a specific pain point exists.",
-          },
-          {
-            q: "How do I manage time when I'm doing everything myself?",
-            a: "Time-block your week: assign specific hours to client work, admin, marketing, and business development. Use the 'big 3' method — identify the 3 most important tasks each day and do those first. Batch similar tasks together. The biggest time thief for solo operators is constantly switching between tasks.",
-          },
-          {
-            q: "How do I handle a difficult customer?",
-            a: "Stay calm and listen first. Address the issue directly and professionally. Refer to your signed contract if they're asking for extras beyond scope. If a relationship is consistently draining, it's okay to professionally end it. One toxic client can consume time meant for five great ones.",
-          },
-          {
-            q: "When is it time to raise prices?",
-            a: "Raise prices when: you're fully booked, you've gained significant new skills or credentials, your results demonstrably improve client outcomes, or you haven't raised rates in 12+ months. Raise rates for new clients first, then gradually for existing ones with 60–90 days notice.",
-          },
+        essentials: [
+          { q: "What tools do I actually need to run a small business?", a: "Essentials: accounting software (QuickBooks or Wave), invoicing, contract signing (DocuSign), and a calendar. Nice-to-have: project management (Notion, Trello), CRM (HubSpot free), scheduling (Calendly). Add tools only when a specific pain point exists." },
+          { q: "How do I manage time when I'm doing everything myself?", a: "Time-block your week: assign specific hours to client work, admin, marketing, and business development. Use the 'big 3' method — identify the 3 most important tasks each day and do those first. Batch similar tasks. Context-switching is the biggest time thief for solo operators." },
+          { q: "How do I handle a difficult customer?", a: "Stay calm and listen first. Address the issue professionally. Refer to your contract if they're asking for extras. If a relationship is consistently draining, it's okay to professionally end it. One toxic client can consume time meant for five great ones." },
+          { q: "When is it time to raise prices?", a: "Raise prices when: you're fully booked, you've gained new skills, your results improve client outcomes, or you haven't raised rates in 12+ months. Raise for new clients first, then gradually for existing ones with 60–90 days notice." },
+          { q: "How do I create processes so things don't fall through the cracks?", a: "Document every repeating task as a simple checklist or SOP. Use a project management tool to track every client project. Create templates for common emails, proposals, and reports. If you were sick for a week, someone could pick up and keep going." },
+        ],
+        advanced: [
+          { q: "When should I hire my first employee or contractor?", a: "Hire when: you're turning down work due to capacity, spending 20%+ of time on tasks someone else could do for $20–$30/hr, or a skill gap is costing you clients. Start with a part-time contractor. Document processes first so training is faster." },
+          { q: "What is the true cost of hiring an employee beyond their salary?", a: "Add 20–30% to the base salary for employer payroll taxes (7.65%), workers' comp insurance, benefits, equipment, onboarding time, and management overhead. A $50,000 salary employee actually costs $60,000–$65,000/year minimum. Factor this into pricing before hiring." },
+          { q: "How do I build systems that let the business run without me?", a: "Document every process as a step-by-step SOP (Standard Operating Procedure). Hire or train someone to follow each SOP. Use software to automate recurring tasks. Test by taking a one-week vacation — if everything breaks, you haven't systemized enough yet." },
+          { q: "What is an org chart and does my small business need one?", a: "An org chart maps who does what and who reports to whom. Even a solo business benefits from one — it shows all the 'hats' you're wearing and helps identify which roles to hire for first. It also becomes essential when adding team members." },
         ],
       },
       {
-        id: "strategy",
-        icon: "△",
-        label: "Strategy & Growth",
-        color: "#9B7EC8",
-        bg: "#0D0A13",
+        id: "strategy", tier: "essentials",
+        icon: "△", label: "Strategy & Growth", color: "#9B7EC8", bg: "#0D0A13",
         desc: "Vision, scaling, blind spots",
-        faqs: [
-          {
-            q: "How do I know if my business idea is viable?",
-            a: "The fastest test: can you get 3 people to pay you for it this week? Talk to 20 potential customers before building anything. Look for existing competition (competitors prove a market exists). A paying customer is the only real validation — everything else is theory.",
-          },
-          {
-            q: "Am I building a business or just a job?",
-            a: "A job requires your personal presence to function — if you stop, revenue stops. A business has systems, processes, and eventually people that generate revenue without you doing everything. Most freelancers accidentally build a job. Build recurring revenue and document your processes to transition.",
-          },
-          {
-            q: "What is customer acquisition cost (CAC) and why does it matter?",
-            a: "CAC = total marketing and sales spend ÷ new customers acquired. Compare to customer lifetime value (LTV). LTV should be at least 3x CAC for a sustainable business. Not knowing this means you can't evaluate whether your marketing is actually working.",
-          },
-          {
-            q: "When should I quit my day job?",
-            a: "When your side business consistently generates 75–100% of your take-home salary for 3+ consecutive months AND you have 6 months of living expenses saved. Don't quit on potential or one good month. Financial pressure from quitting too early leads to bad decisions.",
-          },
-          {
-            q: "Do I need a business plan?",
-            a: "Not a 30-page document, but yes to a one-pager covering: what you sell, who you sell to, how you find customers, your pricing, monthly costs, and revenue target. For a bank loan or investor, a formal plan is required. For a solo service business, a clear one-pager is plenty.",
-          },
+        essentials: [
+          { q: "How do I know if my business idea is viable?", a: "The fastest test: can you get 3 people to pay you for it this week? Talk to 20 potential customers before building anything. Look for existing competition (competitors prove a market exists). A paying customer is the only real validation." },
+          { q: "Do I need a business plan?", a: "Not a 30-page document, but yes to a one-pager: what you sell, who buys it, how you find customers, your pricing, monthly costs, and revenue target. For a bank loan or investor, a formal plan is required." },
+          { q: "When should I quit my day job?", a: "When your side business consistently generates 75–100% of your take-home salary for 3+ consecutive months AND you have 6 months of living expenses saved. Don't quit on potential or one good month." },
+          { q: "Am I building a business or just a job?", a: "A job requires your personal presence — if you stop, revenue stops. A business has systems and people that generate revenue without you doing everything. Most freelancers accidentally build a job. Build recurring revenue and document processes to transition." },
+          { q: "What is the difference between a soft launch and a full launch?", a: "A soft launch is a limited release to a small audience to gather feedback and fix problems before going wide. A full launch is a public, marketed announcement. Most businesses should soft launch first — it's far cheaper to fix problems before, not after, you've told everyone." },
+        ],
+        advanced: [
+          { q: "What is customer acquisition cost (CAC) and lifetime value (LTV)?", a: "CAC = total marketing/sales spend ÷ new customers acquired. LTV = average revenue per customer × average customer lifespan. LTV should be at least 3x CAC for a sustainable business. These two numbers tell you whether your business model actually works at scale." },
+          { q: "When does it make sense to take outside investment vs. bootstrap?", a: "Bootstrap when: you can grow profitably without capital, you want full control, or your market doesn't require speed. Seek investment when: your market is winner-take-all, you need capital to unlock growth (inventory, hiring), or competition requires speed. Most small service businesses should bootstrap." },
+          { q: "What is an exit strategy and why does it matter now?", a: "Exit options: sell the business, pass it to family, bring in a partner, or close it. Thinking about exit early shapes how you build — businesses with documented systems, recurring revenue, and low owner-dependency are worth far more. Even if you never sell, building with this mindset creates a better business." },
+          { q: "How do I evaluate whether to add a new product or service?", a: "Ask: Does it serve my existing clients? Can I deliver it profitably? Does it require new skills or infrastructure? Does it distract from my core? The best expansions serve the same customer with a complementary offering. Avoid expanding into new markets and new products simultaneously." },
+        ],
+      },
+
+      // ── ADVANCED / GROWTH ──────────────────────────────────
+      {
+        id: "taxes", tier: "advanced",
+        icon: "⊕", label: "Taxes & Accounting", color: "#E8874A", bg: "#130D07",
+        desc: "Deductions, filing, bookkeeping, audits",
+        essentials: [
+          { q: "What is the difference between a bookkeeper and a CPA?", a: "A bookkeeper records day-to-day financial transactions — categorizing expenses, reconciling accounts, producing reports. A CPA (Certified Public Accountant) interprets those records, prepares tax returns, provides strategic tax planning, and represents you in an audit. Most small businesses benefit from both — a bookkeeper monthly and a CPA annually." },
+          { q: "How do I track business expenses throughout the year?", a: "Use accounting software (QuickBooks, Wave, or FreshBooks) and connect it to your business bank account and credit card. Every transaction auto-imports and you categorize it. Take photos of receipts with apps like Expensify. Review and reconcile monthly. A shoebox of receipts in April is a costly, stressful mistake." },
+          { q: "What is the home office deduction and how do I qualify?", a: "You qualify if you use a part of your home regularly and exclusively for business. You can deduct either: simplified method ($5/sq ft, max 300 sq ft = $1,500 max) or actual expenses (calculate % of home used for business × total home expenses). The space must be dedicated — a kitchen table doesn't qualify." },
+          { q: "What records do I need to keep and for how long?", a: "Tax returns: keep forever. Supporting documents (receipts, bank statements): 7 years. Employee records: 7 years after termination. Contracts and legal documents: indefinitely. Property records: until sold plus 7 years. The IRS generally has 3 years to audit, but 6 years if they suspect underreported income." },
+          { q: "What happens if I get audited?", a: "An audit is not automatic guilt — most are correspondence audits (a letter asking about one specific item). Respond promptly with documentation. Don't ignore IRS notices. If it escalates to an in-person audit, hire a CPA or tax attorney to represent you. The best defense: clean records kept year-round, not scrambled together in a panic." },
+        ],
+        advanced: [
+          { q: "What is the difference between cash and accrual accounting?", a: "Cash accounting: record revenue when you receive payment, expenses when you pay them. Simple, used by most small businesses. Accrual accounting: record revenue when earned, expenses when incurred, regardless of when cash moves. Required when revenue exceeds $25M, but many growing businesses switch earlier for more accurate financial pictures." },
+          { q: "Can I deduct my car if I use it for business?", a: "Yes. Two methods: standard mileage rate (67 cents/mile in 2024 — track every business mile) or actual expense method (% of business use × total car costs including depreciation). Standard mileage is simpler. You must keep a mileage log with date, destination, and business purpose for every trip." },
+          { q: "What is a quarterly estimated tax payment?", a: "If you expect to owe $1,000+ in taxes, you must pay quarterly (April 15, June 15, Sept 15, Jan 15). Calculate using IRS Form 1040-ES or the prior year's tax as a baseline (safe harbor). Missing payments triggers an underpayment penalty. Set a calendar reminder — this surprises most first-year self-employed people." },
+          { q: "What are common tax mistakes small business owners make?", a: "Top mistakes: not tracking expenses year-round, mixing personal and business finances, missing quarterly payments, not deducting all legitimate expenses, misclassifying employees as contractors, and not contributing to a retirement account (SEP-IRA or Solo 401k) which can save thousands in taxes annually." },
+        ],
+      },
+      {
+        id: "hiring", tier: "advanced",
+        icon: "◎", label: "Hiring & HR", color: "#5BA89B", bg: "#071110",
+        desc: "Employees, contractors, onboarding, culture",
+        essentials: [
+          { q: "What paperwork do I need to onboard a new employee legally?", a: "Required: I-9 (work authorization), W-4 (tax withholding), state equivalent of W-4, direct deposit authorization, and your employee handbook acknowledgment. Set up payroll through Gusto, ADP, or QuickBooks Payroll. Register as an employer with the IRS (get an EIN) and your state labor department." },
+          { q: "How do I create a job description that attracts the right person?", a: "Lead with outcomes, not just duties: 'You'll own our client onboarding process' vs. 'Responsible for onboarding tasks.' Include: required skills (keep the list short), compensation range (listings with salary ranges get 30% more applicants), growth potential, and your company culture in 2–3 honest sentences." },
+          { q: "What are the rules around paying overtime?", a: "Under federal law (FLSA), non-exempt employees must be paid 1.5x their regular rate for hours over 40/week. Exempt employees (salaried, earning $684+/week in qualifying roles) are not entitled to overtime. Misclassifying non-exempt workers as exempt is a common and costly violation." },
+          { q: "How do I let someone go professionally and legally?", a: "Document performance issues with written warnings before termination. Give clear, specific reasons. Have an HR person or witness present. Provide a separation agreement if offering severance. Return personal items and revoke system access same day. Check your state's requirements for final paycheck timing — some require payment within 24–72 hours." },
+          { q: "What is the difference between a contractor and an employee?", a: "Contractors: set their own hours/methods, use own tools, handle own taxes, you pay their invoice. Employees: you control how/when/where they work, withhold taxes, pay employer payroll taxes (7.65%), may offer benefits. The IRS uses a multi-factor test. Misclassifying is a serious violation with back taxes and penalties." },
+        ],
+        advanced: [
+          { q: "How do I build a strong team culture as a small business?", a: "Culture is what you tolerate and what you celebrate — not what's on a poster. Define 3–5 core values with specific behavioral examples. Hire for values fit, not just skills. Address issues quickly and consistently. Celebrate wins publicly. Culture degrades when leaders make exceptions for high performers who violate values." },
+          { q: "Can I require a non-compete agreement from employees?", a: "It depends heavily on your state. California, Minnesota, North Dakota, and others largely ban non-competes. In states that allow them, they must be reasonable in duration (6–12 months), geography, and scope. Courts regularly throw out overly broad non-competes. Non-solicitation agreements (protecting clients and employees) are more consistently enforceable." },
+          { q: "What should an employee handbook cover?", a: "At minimum: employment at-will statement, anti-discrimination and harassment policies, PTO and leave policies, attendance expectations, confidentiality, social media policy, and how to report issues. It sets expectations, reduces disputes, and is your first defense if an employee sues. Update it annually and have employees sign acknowledgment." },
+          { q: "How do I keep good employees from leaving?", a: "The top reasons employees leave: bad managers, no growth path, feeling undervalued, and compensation below market. Solutions: regular 1:1 check-ins (weekly), clear promotion criteria, competitive pay reviewed annually, genuine recognition, and autonomy. Replacing an employee costs 50–200% of their annual salary — retention is one of the best investments you can make." },
+        ],
+      },
+      {
+        id: "ecommerce", tier: "advanced",
+        icon: "⬗", label: "E-Commerce & Online", color: "#A87CC4", bg: "#0E0913",
+        desc: "Selling online, platforms, fulfillment",
+        essentials: [
+          { q: "What platform should I use to sell online?", a: "Etsy: best for handmade, vintage, or niche craft products — built-in audience but high competition and fees. Shopify: best for building your own brand store — full control, $29–$79/month, requires your own marketing. Amazon: massive reach but brutal competition and thin margins. Start on Etsy or Shopify depending on whether you want an existing audience or brand control." },
+          { q: "How do I handle returns and refunds?", a: "Write a clear, fair policy before your first sale. Standard: 30-day returns for unused items in original condition. Be more generous than you think you need to be — customers check return policies before buying. For digital products, clearly state no-refund policies upfront. Process refunds quickly — a smooth refund experience often creates a loyal repeat customer." },
+          { q: "How do I get my first 100 online customers?", a: "Don't start with ads. Start by: posting in relevant Facebook groups and Reddit communities, reaching out to your personal network, partnering with complementary creators for cross-promotion, getting reviewed by a blogger or YouTuber in your niche, and optimizing your product listings for search. Ads come after you've validated what messaging and products work." },
+          { q: "What are chargebacks and how do I prevent them?", a: "A chargeback is when a customer disputes a charge with their bank and the bank reverses it — you lose the sale AND pay a $15–$100 fee. Prevent them by: using clear product descriptions with photos, sending order confirmations, providing tracking numbers, having a visible refund policy, and responding to customer complaints before they escalate to disputes." },
+          { q: "How do I handle sales tax when selling in multiple states?", a: "Since the 2018 South Dakota v. Wayfair ruling, you may owe sales tax in states where you have economic nexus (typically $100,000 in sales or 200 transactions). Use TaxJar or Avalara to automate calculation and filing. Most e-commerce platforms can collect sales tax automatically once configured. This is one area where a CPA is worth consulting early." },
+        ],
+        advanced: [
+          { q: "How do I protect my product or brand online?", a: "Register your trademark ($250–$350 via USPTO). Set up Google Alerts for your brand name. Use the DMCA takedown process for copyright infringement. On Amazon, enroll in Brand Registry (requires trademark). Monitor for counterfeit products using tools like MarkMonitor. Act quickly on infringements — delay can weaken your legal standing." },
+          { q: "What is the best way to price products for an online store?", a: "Formula: (Product cost + shipping + platform fees + payment processing) × desired margin. For physical products, aim for 3–5x your total landed cost as retail price. Price anchor with a 'compare at' price to show value. Test price sensitivity by running the same product at different price points to different audiences." },
+          { q: "How do I get more product reviews?", a: "Send a follow-up email 7–14 days after delivery asking for an honest review. Make it one click to leave a review. For Amazon, use the 'Request a Review' button (compliant with TOS). Never incentivize or buy reviews — platforms actively detect this and it can result in permanent bans. Products with 10+ reviews convert dramatically better than those with zero." },
+        ],
+      },
+      {
+        id: "credit", tier: "advanced",
+        icon: "⊞", label: "Business Credit & Banking", color: "#7BBFA0", bg: "#081210",
+        desc: "Credit, loans, banking, SBA",
+        essentials: [
+          { q: "How do I build business credit separate from my personal credit?", a: "Step 1: Form an LLC or corporation (sole proprietors can't fully separate). Step 2: Get an EIN. Step 3: Open a business bank account and credit card. Step 4: Register with business credit bureaus (Dun & Bradstreet — get a DUNS number free). Step 5: Open accounts with vendors who report to business credit bureaus. Step 6: Pay all business bills early or on time. It takes 6–12 months to establish a meaningful business credit profile." },
+          { q: "What is the difference between a business credit card and a line of credit?", a: "Business credit card: revolving credit for day-to-day expenses, rewards, 0% intro periods. Best for recurring expenses and float. Business line of credit: larger amounts ($10k–$250k+), draw what you need, pay interest only on what you use. Best for cash flow gaps and larger irregular expenses. Both help build business credit and provide flexibility." },
+          { q: "What do banks look for when approving a small business loan?", a: "The 5 Cs: Character (your credit history), Capacity (ability to repay — cash flow), Capital (your own investment in the business), Collateral (assets to secure the loan), and Conditions (purpose, amount, economic environment). Most banks want 2+ years in business, $100k+ annual revenue, and a 680+ personal credit score as a baseline." },
+          { q: "What is an SBA loan and how do I qualify?", a: "SBA (Small Business Administration) loans are government-backed loans made through banks with favorable terms — lower down payments, longer repayment periods, lower rates. Most popular: SBA 7(a) up to $5M for general purposes, SBA 504 for real estate/equipment. Requirements: 2+ years in business, good credit, collateral, and demonstrated ability to repay. Apply through an SBA-approved lender." },
+          { q: "How much cash reserve should a business keep?", a: "Minimum: 3 months of operating expenses in a dedicated savings account. Target: 6 months. This covers payroll, rent, and bills during a slow period without taking on debt. High-revenue but low-margin businesses (restaurants, retail) need closer to 6 months. Service businesses with predictable recurring revenue can manage with 3." },
+        ],
+        advanced: [
+          { q: "When should I consider outside funding vs. staying bootstrapped?", a: "Bootstrap when you can grow profitably without capital. Seek funding when your market moves fast, capital directly unlocks growth (inventory, hiring), or a competitor is better capitalized. Options in order of dilution: revenue-based financing, SBA loan, angel investors, venture capital. Most small service businesses never need outside investment." },
+          { q: "What is a personal guarantee on a business loan?", a: "A personal guarantee means if your business can't repay the loan, you're personally responsible — the lender can come after your personal assets (home, car, savings). Nearly all SBA loans and many small business loans require one. Understand what you're signing before agreeing. Negotiate to limit the guarantee to a specific amount if possible." },
+          { q: "How do I prepare my business financials for a bank meeting?", a: "Bring: last 2 years of business tax returns, last 2 years of personal tax returns, year-to-date P&L and balance sheet, 3 months of business bank statements, and a written explanation of how you'll use and repay the funds. Have your bookkeeper or CPA prepare clean financial statements — messy or inconsistent records are an immediate red flag to lenders." },
+        ],
+      },
+      {
+        id: "socialmedia", tier: "advanced",
+        icon: "◑", label: "Social Media & Digital", color: "#6A9ED4", bg: "#080F16",
+        desc: "SEO, social platforms, content, ads",
+        essentials: [
+          { q: "Which social media platform should I focus on?", a: "Choose based on where your customers actually are. B2B or professional services: LinkedIn. Visual products (fashion, food, decor, beauty): Instagram and Pinterest. Local businesses: Facebook and Nextdoor. Reaching younger audiences: TikTok. Don't try to be everywhere at once — master one platform before expanding to a second." },
+          { q: "What is SEO and does a small business really need it?", a: "SEO (Search Engine Optimization) is the practice of making your website show up in Google search results for relevant terms. Yes, small businesses need it — 46% of all Google searches are for local businesses. Basics: claim your Google Business Profile (free), add your business to relevant directories, ensure your website mentions your city and services clearly, and get a few customer reviews on Google." },
+          { q: "How often should I post on social media?", a: "Consistency beats frequency. A realistic sustainable schedule: LinkedIn 3x/week, Instagram 4x/week, TikTok 5x/week, Facebook 3x/week. Better to post 3 times a week reliably for a year than daily for two weeks then go silent. Post when your audience is online — check your analytics for peak engagement hours." },
+          { q: "Should I use paid ads or focus on organic growth first?", a: "Organic first — always. Validate your message and offer with organic content before spending money to amplify it. If organic posts about a specific topic get significantly more engagement, that's what your ads should be about. Most businesses waste their first ad budget before understanding what resonates with their audience." },
+          { q: "What is a content calendar and do I need one?", a: "A content calendar is a planned schedule of what you'll post, when, and on which platform. Yes, you need one — even a simple spreadsheet works. Plan one month at a time. Include: topic, format (video/image/text), platform, and goal (awareness vs. engagement vs. conversion). Batch-create content one day per week rather than scrambling daily." },
+        ],
+        advanced: [
+          { q: "How do I run a Facebook or Instagram ad on a small budget?", a: "Start with $10–$20/day for 7–14 days to gather data. Target by interest + behavior + lookalike audiences. Test 3–5 ad variations with different images or first lines. Don't change ads mid-test — let them run their full cycle. Measure cost per click and cost per lead, not just impressions. Kill underperforming ads fast and put budget behind winners." },
+          { q: "What kind of content actually builds an audience?", a: "Content that educates, entertains, or inspires your specific niche. The 80/20 rule: 80% value-giving content (tips, behind-the-scenes, lessons learned), 20% promotional. For service businesses, showing your process and results builds more trust than polished promotional content. Stories and reels consistently outperform static posts on most platforms." },
+          { q: "How do I grow on LinkedIn as a small business owner?", a: "Post from your personal profile, not just your company page — personal accounts get 10x more reach. Share opinions and lessons, not just information. Comment substantively on posts by potential clients and industry leaders. Connect with 5–10 ideal clients per week with personalized notes. Consistency over 90 days builds more momentum than sporadic viral posts." },
+          { q: "What is local SEO and how do I rank higher in Google Maps?", a: "Local SEO gets your business to appear in Google's 'map pack' for local searches. Key steps: claim and fully complete your Google Business Profile, get consistent NAP (Name, Address, Phone) across all directories, actively collect Google reviews, add photos regularly, and post weekly updates on Google Business. Businesses with 50+ Google reviews dominate local results." },
+        ],
+      },
+      {
+        id: "clients", tier: "advanced",
+        icon: "⬖", label: "Client Relations", color: "#C49A6C", bg: "#130F08",
+        desc: "Proposals, onboarding, retention, disputes",
+        essentials: [
+          { q: "How do I write a proposal that actually wins clients?", a: "Lead with their problem, not your credentials. Structure: (1) restate their situation in your own words to show you understand, (2) your proposed solution with specific deliverables and timeline, (3) investment (price), (4) brief relevant credentials or case study. Keep it under 2 pages for most service work. Follow up within 48 hours if you haven't heard back." },
+          { q: "How do I handle scope creep — when clients ask for more than agreed?", a: "Prevent it with a clear contract that defines deliverables explicitly. When it happens: acknowledge the request positively ('Happy to add that'), then reference the agreed scope and offer a change order with additional cost and timeline. Never do extra work for free more than once — it trains clients to expect it." },
+          { q: "How do I fire a client professionally?", a: "Give 30 days notice in writing. Keep it professional and non-personal: 'I've determined this engagement isn't the right fit.' Complete any outstanding deliverables you've been paid for. Offer to help with transition if appropriate. Don't badmouth them publicly. Document everything in case of disputes." },
+          { q: "What should a client onboarding process look like?", a: "A good onboarding: (1) signed contract and deposit received, (2) welcome email with timeline and what to expect, (3) intake questionnaire or kickoff call to gather everything you need, (4) set communication expectations (response time, preferred channel), (5) share project timeline with milestones. A smooth onboarding sets the tone for the entire relationship." },
+          { q: "How do I collect a testimonial or case study from a happy client?", a: "Ask within a week of delivering great results — that's when enthusiasm is highest. Make it easy: send 3 specific questions ('What was your situation before working with me? What changed? Who would you recommend me to?'). For case studies, ask if you can write it up and have them approve it. Use results and numbers wherever possible." },
+        ],
+        advanced: [
+          { q: "How do I raise my rates with existing clients?", a: "Give 60–90 days notice in writing. Frame it around increased value, not personal need. Include a specific effective date. Offer a brief transition period at the old rate for long-term clients if you choose. Most clients expect annual rate increases — it's only awkward if you make it awkward. Clients who leave over a reasonable increase weren't the right clients." },
+          { q: "What is the best way to follow up with prospects without being annoying?", a: "The 1–3–7–14–30 rule: follow up 1 day, 3 days, 7 days, 14 days, then 30 days after initial contact. Each follow-up should add value (a relevant article, a new insight, an updated proposal). After 5 unanswered attempts, send a breakup email: 'I'll assume timing isn't right — feel free to reach out when it is.' This often triggers a response." },
+          { q: "How do I create a referral program?", a: "Keep it simple: define the reward (cash, discount, or gift), set clear terms (paid out after referred client completes payment), create a one-page PDF or landing page explaining the program, and email all current and past clients to announce it. The best referral programs are talked about at the right moment — after delivering exceptional results, not before." },
+          { q: "How do I build long-term client relationships that lead to repeat business?", a: "Stay in touch between projects: share a relevant article, check in quarterly with a quick note, remember key details about their business and goals. Create an annual review call to discuss their results and upcoming needs. The clients who give you the most work over time are the ones you treat like VIPs, not transactions." },
         ],
       },
     ],
   },
 
-  // ════════════════════════════════════════════════════════
+  // ════════════════════════════════════════════════
   // SPANISH
-  // ════════════════════════════════════════════════════════
+  // ════════════════════════════════════════════════
   es: {
     appName: "BizAdvisor",
-    nav: { home: "Inicio", askAI: "Preguntar a IA" },
-
+    nav: {
+      home: "Inicio", askAI: "Preguntar IA",
+      templates: "Plantillas", contact: "Contacto", search: "Buscar...",
+    },
     hero: {
       badge: "Inteligencia para Pequeños Negocios",
       title1: "Cada respuesta que tu",
       title2: "negocio necesita.",
-      sub: "Explora guías por tema, revisa preguntas frecuentes o consulta a nuestro asesor de IA cualquier pregunta de negocios — desde impuestos hasta crecimiento.",
+      sub: "Explora guías por tema, revisa preguntas frecuentes o consulta a nuestro asesor de IA — desde impuestos hasta crecimiento.",
       btnAI: "Consultar al Asesor IA →",
       btnBrowse: "Explorar Temas",
     },
-
-    popularLabel: "Preguntas populares →",
-    popularQuestions: [
-      "¿Cómo fijo el precio de mis servicios?",
-      "¿Debo formar una LLC?",
-      "¿Cómo funcionan los impuestos por cuenta propia?",
-      "¿Cuándo debo contratar a mi primer empleado?",
-      "¿Cómo encuentro mis primeros clientes?",
-      "¿Cuál es la diferencia entre ganancia y flujo de caja?",
-    ],
-
+    tiers: {
+      essentials: "Fundamentos del Negocio",
+      essentialsSub: "Conocimiento fundamental para todo dueño de negocio",
+      advanced: "Crecimiento del Negocio",
+      advancedSub: "Estrategias para escalar, optimizar y expandir",
+    },
+    popularLabel: "Preguntas populares",
     browseTitle: "Explorar por Tema",
     faqCount: (n) => `${n} Preguntas`,
-    followUp: "Hacer una pregunta de seguimiento →",
+    followUp: "Hacer pregunta de seguimiento →",
     noQuestion: "¿No encuentras tu pregunta?",
     askAdvisor: "Consultar al Asesor IA →",
-
     ctaTitle: "¿Tienes una pregunta específica?",
     ctaSub: "Nuestro asesor de IA está entrenado en mejores prácticas para pequeños negocios",
     ctaBtn: "Preguntar Ahora →",
-
     breadHome: "Inicio",
-
+    emailCapture: {
+      title: "Obtén la Guía Gratuita para Iniciar tu Negocio",
+      sub: "Una lista práctica sobre configuración legal, finanzas, marketing y tus primeros 90 días.",
+      placeholder: "tu@correo.com",
+      btn: "Enviarme la Guía →",
+      note: "Sin spam. Cancela cuando quieras.",
+    },
+    contact: {
+      title: "Contáctanos",
+      sub: "¿Tienes una pregunta, sugerencia o consulta de colaboración? Nos encantaría escucharte.",
+      name: "Tu Nombre",
+      email: "Tu Correo",
+      subject: "Asunto",
+      message: "Tu Mensaje",
+      btn: "Enviar Mensaje →",
+      success: "¡Mensaje enviado! Te responderemos en 1–2 días hábiles.",
+      error: "Algo salió mal. Por favor intenta de nuevo.",
+      subjectOptions: [
+        "Pregunta General",
+        "Solicitud de Plantilla",
+        "Consulta de Colaboración",
+        "Reportar un Problema",
+        "Otro",
+      ],
+    },
+    privacy: {
+      title: "Política de Privacidad",
+      lastUpdated: "Última actualización: Mayo 2026",
+    },
+    footer: {
+      tagline: "Orientación práctica de negocios para emprendedores en cada etapa.",
+      sections: {
+        product: { title: "Producto", links: ["Inicio", "Preguntar IA", "Plantillas", "Contacto"] },
+        topics: { title: "Temas", links: ["Finanzas y Dinero", "Legal y Estructura", "Marketing y Ventas", "Operaciones", "Estrategia y Crecimiento", "Impuestos y Contabilidad"] },
+        legal: { title: "Legal", links: ["Política de Privacidad", "Términos de Uso"] },
+      },
+      copyright: `© ${new Date().getFullYear()} BizAdvisor. Todos los derechos reservados.`,
+    },
     chat: {
       name: "BizAdvisor IA",
       status: "En línea · Experto en Pequeños Negocios",
@@ -263,158 +375,206 @@ export const translations = {
         "¿Realmente necesito una LLC?",
         "¿Cómo manejo a un cliente que no paga?",
       ],
-      systemPrompt: `Eres un asesor de negocios práctico y experto. Das consejos claros y accionables a emprendedores y dueños de pequeños negocios. Tus respuestas son concisas pero completas (máximo 2-4 párrafos cortos), prácticas y específicas, honestas sobre riesgos, en lenguaje sencillo sin jerga técnica, y alentadoras pero realistas. Áreas de enfoque: finanzas, estructura legal, marketing, operaciones, estrategia y mentalidad. Prioriza siempre el consejo más accionable primero. Responde siempre en español.`,
+      systemPrompt: `Eres un asesor de negocios práctico y experto. Das consejos claros y accionables a emprendedores y dueños de pequeños negocios. Tus respuestas son concisas pero completas (máximo 2-4 párrafos cortos), prácticas y específicas, honestas sobre riesgos, en lenguaje sencillo sin jerga técnica. Responde siempre en español.`,
     },
 
     categories: [
       {
-        id: "finance",
-        icon: "◈",
-        label: "Finanzas y Dinero",
-        color: "#D4A843",
-        bg: "#1A140A",
+        id: "finance", tier: "essentials",
+        icon: "◈", label: "Finanzas y Dinero", color: "#D4A843", bg: "#1A140A",
         desc: "Precios, flujo de caja, impuestos, ganancia",
-        faqs: [
-          {
-            q: "¿Cuánto dinero necesito para iniciar mi negocio?",
-            a: "Los negocios de servicios (contabilidad, consultoría) pueden lanzarse con menos de $500. Los negocios de productos típicamente necesitan $2,000–$10,000+ para inventario y configuración. Haz una lista de cada gasto para tus primeros 90 días y agrega un 20% de margen para imprevistos. Lo clave es conocer tu punto de equilibrio antes de gastar.",
-          },
-          {
-            q: "¿Cuál es la diferencia entre ingresos, ganancia y flujo de caja?",
-            a: "Ingresos = dinero total que entra. Ganancia = ingresos menos todos los gastos. Flujo de caja = el momento real en que el dinero entra y sale de tu cuenta. Un negocio puede ser rentable en papel pero tener flujo de caja negativo si los clientes pagan tarde. Por eso negocios rentables a veces se quedan sin dinero.",
-          },
-          {
-            q: "¿Cómo funcionan los impuestos por cuenta propia?",
-            a: "Los trabajadores por cuenta propia pagan tanto la parte del empleado como la del empleador del Seguro Social y Medicare — un total del 15.3% sobre los ingresos netos, más el impuesto federal sobre la renta. Aparta el 25–30% de cada pago en una cuenta de ahorros dedicada. Paga impuestos estimados trimestralmente para evitar multas del IRS.",
-          },
-          {
-            q: "¿Cómo fijo el precio de mi servicio o producto?",
-            a: "Calcula todos tus costos (materiales, tiempo, gastos generales, software) y luego agrega tu margen de ganancia deseado. Investiga lo que cobran los competidores. Considera precios basados en valor — ¿cuánto vale el resultado para tu cliente? La mayoría de los principiantes cobran de menos. Si estás completamente ocupado, es señal de subir precios.",
-          },
-          {
-            q: "¿Qué gastos de negocio puedo deducir?",
-            a: "Deducciones comunes: oficina en casa, software empresarial, teléfono/internet (porción de negocio), equipo, desarrollo profesional, publicidad, comidas de negocio (50%), uso del vehículo y servicios profesionales. Guarda recibos de todo. Un buen sistema contable se paga solo con el ahorro en impuestos.",
-          },
+        essentials: [
+          { q: "¿Cuánto dinero necesito para iniciar mi negocio?", a: "Los negocios de servicios pueden lanzarse con menos de $500. Los negocios de productos típicamente necesitan $2,000–$10,000+. Haz una lista de cada gasto para los primeros 90 días y agrega un 20% de margen para imprevistos. Lo clave es conocer tu punto de equilibrio antes de gastar." },
+          { q: "¿Cuál es la diferencia entre ingresos, ganancia y flujo de caja?", a: "Ingresos = dinero total que entra. Ganancia = ingresos menos todos los gastos. Flujo de caja = el momento real en que el dinero entra y sale. Un negocio puede ser rentable en papel pero tener flujo de caja negativo si los clientes pagan tarde." },
+          { q: "¿Cómo funcionan los impuestos por cuenta propia?", a: "Los trabajadores por cuenta propia pagan tanto la parte del empleado como la del empleador del Seguro Social y Medicare — un total del 15.3% sobre los ingresos netos. Aparta el 25–30% de cada pago en una cuenta dedicada. Paga impuestos estimados trimestralmente." },
+          { q: "¿Cómo fijo el precio de mi servicio o producto?", a: "Calcula todos tus costos y agrega tu margen deseado. Investiga a los competidores. Considera precios basados en valor. La mayoría de los principiantes cobran de menos. Si estás completamente ocupado, es señal de subir precios." },
+          { q: "¿Qué gastos de negocio puedo deducir?", a: "Deducciones comunes: oficina en casa, software empresarial, teléfono/internet, equipo, desarrollo profesional, publicidad, comidas de negocio (50%), uso del vehículo y servicios profesionales. Guarda recibos de todo." },
+          { q: "¿Cómo separo las finanzas personales y empresariales?", a: "Abre una cuenta bancaria empresarial y tarjeta de crédito empresarial de inmediato. Págarte un sueldo definido. Nunca pagues facturas personales con la cuenta del negocio. Esto es crítico para impuestos, protección legal y entender la rentabilidad real." },
+        ],
+        advanced: [
+          { q: "¿Qué es un estado de pérdidas y ganancias y cómo lo leo?", a: "Un P&G resume tus ingresos, costos y gastos en un período. La línea superior son los ingresos. Resta el costo de los bienes vendidos para obtener la ganancia bruta. Resta los gastos operativos para obtener el ingreso operativo. Resta impuestos e intereses para obtener la ganancia neta. Revísalo mensualmente." },
+          { q: "¿Cuándo debo reinvertir ganancias vs. pagarme más?", a: "Págarte primero una cantidad sostenible, aunque sea pequeña. Luego reinvierte un % definido de la ganancia restante (típicamente 30–50%). Nunca reinviertas el 100%. A medida que los ingresos crezcan consistentemente por 3+ meses, aumenta tu pago antes de expandir agresivamente." },
+          { q: "¿Qué es el punto de equilibrio y por qué importa?", a: "Punto de equilibrio = Costos Fijos ÷ (Precio por unidad – Costo variable por unidad). Todo dueño de negocio debe conocer este número antes de gastar en crecimiento." },
+          { q: "¿Cómo manejo el flujo de caja durante meses lentos?", a: "Construye una reserva de 3 meses de gastos operativos. Crea un pronóstico de flujo de caja de 12 meses. Solicita depósitos por adelantado a los clientes. Considera una línea de crédito empresarial antes de necesitarla." },
+          { q: "¿Cuál es la diferencia entre markup y margen?", a: "Markup = ganancia como % del costo. Margen = ganancia como % del precio de venta. Un artículo cuesta $60 y se vende por $100: Markup = 67%, Margen = 40%. El margen es más útil para decisiones empresariales." },
         ],
       },
       {
-        id: "legal",
-        icon: "⬡",
-        label: "Legal y Estructura",
-        color: "#5B8FA8",
-        bg: "#080F13",
+        id: "legal", tier: "essentials",
+        icon: "⬡", label: "Legal y Estructura", color: "#5B8FA8", bg: "#080F13",
         desc: "LLC, contratos, licencias, protección",
-        faqs: [
-          {
-            q: "¿Debo formar una LLC?",
-            a: "Para la mayoría de los pequeños negocios: sí. Una LLC cuesta $50–$500 para formarse y protege tus activos personales (casa, auto, ahorros) de deudas y demandas del negocio. Una empresa unipersonal es más simple pero te deja personalmente responsable. Forma la LLC antes de empezar a trabajar con clientes.",
-          },
-          {
-            q: "¿Cuál es la diferencia entre LLC y S-Corp?",
-            a: "Una LLC es una estructura legal. Una S-Corp es una elección tributaria que puedes aplicar a una LLC. La ventaja de S-Corp: te pagas un salario razonable y tomas la ganancia restante como distribuciones — las distribuciones evitan el impuesto de trabajo por cuenta propia del 15.3%. Esto ahorra dinero cuando tu ganancia neta supera ~$60,000/año.",
-          },
-          {
-            q: "¿Qué contratos realmente necesito?",
-            a: "Como mínimo: un acuerdo de servicios al cliente (alcance, pago, plazos, política de cancelación) para cada cliente. Si contratas ayuda: un acuerdo de contratista independiente. Para información confidencial: un NDA. Las plantillas simples en lenguaje claro funcionan bien — no necesitas un abogado para contratos básicos.",
-          },
-          {
-            q: "¿Qué seguros necesita un pequeño negocio?",
-            a: "Responsabilidad general ($500–$1,500/año) cubre daños a la propiedad o lesiones. Responsabilidad profesional ($500–$2,000/año) cubre errores en tus servicios — esencial para contadores, consultores y diseñadores. Si tienes empleados, la compensación laboral es obligatoria en la mayoría de los estados.",
-          },
-          {
-            q: "¿Necesito una licencia comercial?",
-            a: "La mayoría de las ciudades y condados requieren una licencia comercial general ($25–$100/año). Algunas industrias requieren licencias adicionales (contratistas, servicio de alimentos, salud). Consulta el sitio web de tu ciudad/condado y el portal estatal de negocios. Si trabajas desde casa, también verifica las leyes de zonificación local.",
-          },
+        essentials: [
+          { q: "¿Debo formar una LLC?", a: "Para la mayoría de los pequeños negocios: sí. Una LLC cuesta $50–$500 para formarse y protege tus activos personales. Una empresa unipersonal es más simple pero te deja personalmente responsable." },
+          { q: "¿Qué contratos realmente necesito?", a: "Como mínimo: un acuerdo de servicios al cliente para cada cliente. Si contratas ayuda: un acuerdo de contratista independiente. Para información confidencial: un NDA. Obtén cada acuerdo firmado antes de comenzar el trabajo." },
+          { q: "¿Qué seguros necesita un pequeño negocio?", a: "Responsabilidad general ($500–$1,500/año). Responsabilidad profesional ($500–$2,000/año) — esencial para contadores, consultores y diseñadores. Si tienes empleados, la compensación laboral es obligatoria en la mayoría de los estados." },
+          { q: "¿Necesito una licencia comercial?", a: "La mayoría de las ciudades y condados requieren una licencia comercial general ($25–$100/año). Algunas industrias requieren licencias adicionales. Consulta el sitio web de tu ciudad/condado." },
+          { q: "¿Cuál es la diferencia entre marca registrada, derechos de autor y patente?", a: "Marca registrada: protege nombres de marca y logos. Derechos de autor: protege automáticamente trabajo creativo original. Patente: protege inventos. Para la mayoría de los pequeños negocios, registrar una marca ($250–$350) es la primera protección de IP más práctica." },
+        ],
+        advanced: [
+          { q: "¿Cuál es la diferencia entre LLC y S-Corp?", a: "Una LLC es una estructura legal. Una S-Corp es una elección tributaria. Ventaja S-Corp: te pagas un salario razonable y tomas la ganancia restante como distribuciones, evitando el impuesto de trabajo por cuenta propia del 15.3%. Ahorra cuando la ganancia neta supera ~$60,000/año." },
+          { q: "¿Cuándo necesito un acuerdo de asociación?", a: "En el momento que tengas un socio comercial. Cubre: porcentajes de propiedad, autoridad de toma de decisiones, distribución de ganancias, qué sucede si un socio quiere irse, y cómo se resuelven las disputas." },
+          { q: "¿Cómo protejo una idea de negocio antes de presentarla?", a: "Pide a todos los que escuchen tu idea que firmen un NDA antes de la reunión. Documenta todo con marcas de tiempo. Para software/tecnología, presenta una patente provisional ($320) para establecer una fecha de prioridad." },
+          { q: "¿Qué debo saber sobre contratos comerciales antes de firmar?", a: "Lee cada cláusula, especialmente terminación, responsabilidad y propiedad intelectual. Observa: cláusulas de renovación automática, restricciones de no competencia, cláusulas de indemnización y cláusulas de 'trabajo por encargo'. Para contratos mayores de $5,000, una revisión de una hora con un abogado vale la pena." },
         ],
       },
       {
-        id: "marketing",
-        icon: "◇",
-        label: "Marketing y Ventas",
-        color: "#C46A4E",
-        bg: "#130A08",
+        id: "marketing", tier: "essentials",
+        icon: "◇", label: "Marketing y Ventas", color: "#C46A4E", bg: "#130A08",
         desc: "Clientes, referencias, presencia en línea",
-        faqs: [
-          {
-            q: "¿Cómo encuentro mis primeros clientes?",
-            a: "Tu red personal es el camino más rápido. Cuéntale a todos lo que haces y a quién ayudas. Publica en LinkedIn y grupos locales de Facebook. Ofrece un primer proyecto con descuento o gratis para obtener un testimonio. Pide referencias a clientes satisfechos. La mayoría de los primeros clientes vienen de personas que ya conoces.",
-          },
-          {
-            q: "¿Necesito un sitio web de inmediato?",
-            a: "No necesariamente. Muchos negocios obtienen sus primeros 10 clientes sin uno. Un perfil de LinkedIn o un sitio sencillo de una página (Carrd, Squarespace — $10–$20/mes) es suficiente para empezar. Enfócate en conseguir clientes primero, luego invierte en un sitio profesional cuando tengas ingresos.",
-          },
-          {
-            q: "¿Qué es un nicho y realmente lo necesito?",
-            a: "Un nicho es un segmento de mercado específico en el que te enfocas. En lugar de 'contador,' te conviertes en 'contador para restaurantes.' El nicho hace el marketing más fácil, te hace más recomendable y te permite cobrar más como especialista. Tratar de servir a todos significa no ser nada para nadie.",
-          },
-          {
-            q: "¿Cómo pido referencias sin sentirme incómodo?",
-            a: "Hazlo simple y específico: 'Busco trabajar con más clientes como tú — si conoces a dueños de negocios que tengan problemas con [problema], me encantaría una presentación.' La mayoría de los clientes satisfechos quieren ayudar pero no saben que estás buscando. Pregunta justo después de completar un proyecto exitoso.",
-          },
-          {
-            q: "¿Cuál es la diferencia entre marketing y ventas?",
-            a: "El marketing crea conciencia e interés (contenido, redes sociales, anuncios, SEO). Las ventas convierten ese interés en clientes que pagan (conversaciones, propuestas, seguimientos, cierre). La mayoría de los dueños de pequeños negocios son buenos en uno e ignoran el otro. Necesitas ambos.",
-          },
+        essentials: [
+          { q: "¿Cómo encuentro mis primeros clientes?", a: "Tu red personal es el camino más rápido. Cuéntale a todos lo que haces. Publica en LinkedIn y grupos locales de Facebook. Ofrece un primer proyecto con descuento para obtener un testimonio. La mayoría de los primeros clientes vienen de personas que ya conoces." },
+          { q: "¿Necesito un sitio web de inmediato?", a: "No necesariamente. Muchos negocios obtienen sus primeros 10 clientes sin uno. Un perfil de LinkedIn o un sitio sencillo ($10–$20/mes) es suficiente para empezar. Enfócate en conseguir clientes primero." },
+          { q: "¿Qué es un nicho y por qué lo necesito?", a: "Un nicho es un segmento de mercado específico en el que te enfocas. En lugar de 'contador,' te conviertes en 'contador para restaurantes.' El nicho hace el marketing más fácil y te permite cobrar más como especialista." },
+          { q: "¿Cómo pido referencias sin sentirme incómodo?", a: "Sé específico: 'Busco trabajar con más clientes como tú — si conoces a dueños de negocios que tengan problemas con [problema], me encantaría una presentación.' Pregunta justo después de completar un proyecto exitoso." },
+          { q: "¿Cuál es la diferencia entre marketing y ventas?", a: "El marketing crea conciencia e interés. Las ventas convierten ese interés en clientes que pagan. La mayoría de los dueños de pequeños negocios son buenos en uno e ignoran el otro. Necesitas ambos." },
+        ],
+        advanced: [
+          { q: "¿Cómo construyo una lista de correos y por qué importa?", a: "Comienza a recopilar correos desde el primer día usando Mailchimp o ConvertKit. Ofrece algo valioso a cambio (lista de verificación, plantilla, guía). Una lista de correos es el único público que posees — los seguidores en redes sociales pueden desaparecer." },
+          { q: "¿Qué es un lead magnet y cómo creo uno?", a: "Un lead magnet es un recurso gratuito que ofreces a cambio de una dirección de correo. Los mejores: plantillas, listas de verificación, calculadoras o guías cortas. Debe resolver un problema específico inmediatamente. Un buen lead magnet puede convertir al 20–40% de los visitantes en suscriptores." },
+          { q: "¿Cómo manejo una reseña negativa en línea?", a: "Responde públicamente, con calma, en 24 horas. Reconoce su preocupación sin admitir culpa. Ofrece resolver el problema en privado. Nunca discutas públicamente. Una respuesta defensiva te daña más que la reseña misma." },
+          { q: "¿Cuándo debo comenzar a pagar por anuncios?", a: "Solo después de haber validado tu oferta orgánicamente. Los anuncios amplían lo que ya funciona — no arreglan una oferta defectuosa. Comienza con $10–$20/día, prueba 3–5 variaciones de anuncios y mide el costo por cliente potencial antes de escalar." },
         ],
       },
       {
-        id: "operations",
-        icon: "◉",
-        label: "Operaciones",
-        color: "#6E9E6E",
-        bg: "#080F08",
+        id: "operations", tier: "essentials",
+        icon: "◉", label: "Operaciones", color: "#6E9E6E", bg: "#080F08",
         desc: "Contratación, herramientas, tiempo, procesos",
-        faqs: [
-          {
-            q: "¿Cuándo debo contratar a mi primer empleado o contratista?",
-            a: "Contrata cuando: estás rechazando trabajo por falta de capacidad, pasas más del 20% de tu tiempo en tareas que alguien más podría hacer por $20–$30/hr, o una brecha de habilidades te está costando clientes. Empieza con un contratista de medio tiempo antes que un empleado completo — menor riesgo, más flexibilidad.",
-          },
-          {
-            q: "¿Qué herramientas realmente necesito para manejar un pequeño negocio?",
-            a: "Esenciales: software de contabilidad (QuickBooks o Wave), herramienta de facturación, firma de contratos (DocuSign) y un calendario. Útiles cuando estás creciendo: gestión de proyectos (Notion, Trello), CRM (HubSpot gratuito) y programación de citas (Calendly). Agrega herramientas solo cuando exista un problema específico.",
-          },
-          {
-            q: "¿Cómo administro el tiempo cuando lo hago todo yo mismo?",
-            a: "Bloquea tu semana en horarios: asigna horas específicas para trabajo con clientes, administración, marketing y desarrollo de negocios. Usa el método de 'los 3 grandes' — identifica las 3 tareas más importantes del día y hazlas primero. Agrupa tareas similares. El mayor ladrón de tiempo para operadores independientes es cambiar constantemente entre tareas.",
-          },
-          {
-            q: "¿Cómo manejo a un cliente difícil?",
-            a: "Mantén la calma y escucha primero. Aborda el problema directamente y profesionalmente. Consulta tu contrato firmado si piden extras fuera del alcance. Si una relación es constantemente agotadora, está bien terminarla profesionalmente. Un cliente tóxico puede consumir el tiempo destinado a cinco clientes excelentes.",
-          },
-          {
-            q: "¿Cuándo es momento de subir los precios?",
-            a: "Sube precios cuando: estás completamente ocupado, has adquirido nuevas habilidades importantes, tus resultados mejoran demostrablemente los resultados del cliente, o no has subido tarifas en 12+ meses. Sube tarifas para nuevos clientes primero, luego gradualmente para los existentes con 60–90 días de aviso.",
-          },
+        essentials: [
+          { q: "¿Qué herramientas realmente necesito para manejar un pequeño negocio?", a: "Esenciales: software de contabilidad (QuickBooks o Wave), facturación, firma de contratos (DocuSign) y un calendario. Útiles al crecer: gestión de proyectos (Notion, Trello), CRM (HubSpot gratuito) y programación de citas (Calendly)." },
+          { q: "¿Cómo administro el tiempo cuando lo hago todo yo mismo?", a: "Bloquea tu semana en horarios: asigna horas específicas para trabajo con clientes, administración, marketing y desarrollo de negocios. Usa el método de los '3 grandes' — identifica las 3 tareas más importantes del día y hazlas primero." },
+          { q: "¿Cómo manejo a un cliente difícil?", a: "Mantén la calma y escucha primero. Aborda el problema profesionalmente. Consulta tu contrato si piden extras fuera del alcance. Si una relación es constantemente agotadora, está bien terminarla profesionalmente." },
+          { q: "¿Cuándo es momento de subir los precios?", a: "Sube precios cuando: estás completamente ocupado, has adquirido nuevas habilidades, tus resultados mejoran los del cliente, o no has subido tarifas en 12+ meses. Sube para nuevos clientes primero, luego gradualmente para los existentes." },
+          { q: "¿Cómo creo procesos para que nada se pierda?", a: "Documenta cada tarea repetitiva como una lista de verificación o SOP. Usa una herramienta de gestión de proyectos para rastrear cada proyecto de cliente. Crea plantillas para correos, propuestas e informes comunes." },
+        ],
+        advanced: [
+          { q: "¿Cuándo debo contratar a mi primer empleado o contratista?", a: "Contrata cuando: estás rechazando trabajo por capacidad, pasas más del 20% del tiempo en tareas que otros podrían hacer, o una brecha de habilidades te cuesta clientes. Empieza con un contratista de medio tiempo." },
+          { q: "¿Cuál es el costo real de contratar un empleado más allá del salario?", a: "Agrega 20–30% al salario base por impuestos de nómina del empleador (7.65%), seguro de compensación laboral, beneficios, equipo y capacitación. Un empleado con salario de $50,000 realmente cuesta $60,000–$65,000/año mínimo." },
+          { q: "¿Cómo construyo sistemas para que el negocio funcione sin mí?", a: "Documenta cada proceso como un SOP paso a paso. Contrata o capacita a alguien para seguir cada SOP. Usa software para automatizar tareas recurrentes. Prueba tomando una semana de vacaciones — si todo se rompe, no has sistematizado suficiente." },
+          { q: "¿Qué es un organigrama y lo necesita mi pequeño negocio?", a: "Un organigrama mapea quién hace qué y a quién reporta. Incluso un negocio unipersonal se beneficia de uno — muestra todos los 'sombreros' que usas y ayuda a identificar qué roles contratar primero." },
         ],
       },
       {
-        id: "strategy",
-        icon: "△",
-        label: "Estrategia y Crecimiento",
-        color: "#9B7EC8",
-        bg: "#0D0A13",
+        id: "strategy", tier: "essentials",
+        icon: "△", label: "Estrategia y Crecimiento", color: "#9B7EC8", bg: "#0D0A13",
         desc: "Visión, escalado, puntos ciegos",
-        faqs: [
-          {
-            q: "¿Cómo sé si mi idea de negocio es viable?",
-            a: "La prueba más rápida: ¿puedes conseguir que 3 personas te paguen por ello esta semana? Habla con 20 clientes potenciales antes de construir cualquier cosa. Busca competencia existente (los competidores prueban que hay mercado). Un cliente que paga es la única validación real — todo lo demás es teoría.",
-          },
-          {
-            q: "¿Estoy construyendo un negocio o solo un empleo?",
-            a: "Un empleo requiere tu presencia personal para funcionar — si paras, los ingresos paran. Un negocio tiene sistemas, procesos y eventualmente personas que generan ingresos sin que hagas todo tú. La mayoría de los freelancers accidentalmente construyen un empleo. Construye ingresos recurrentes y documenta tus procesos para hacer la transición.",
-          },
-          {
-            q: "¿Qué es el costo de adquisición de clientes (CAC)?",
-            a: "CAC = gasto total en marketing y ventas ÷ nuevos clientes adquiridos. Compara con el valor de vida del cliente (LTV). El LTV debe ser al menos 3 veces el CAC para un negocio sostenible. No saber esto significa que no puedes evaluar si tu marketing realmente está funcionando.",
-          },
-          {
-            q: "¿Cuándo debo dejar mi trabajo de tiempo completo?",
-            a: "Cuando tu negocio secundario genere consistentemente el 75–100% de tu salario neto durante 3+ meses consecutivos Y tengas 6 meses de gastos de vida ahorrados. No renuncies por potencial o un buen mes. La presión financiera de renunciar demasiado pronto lleva a malas decisiones.",
-          },
-          {
-            q: "¿Necesito un plan de negocios?",
-            a: "No un documento de 30 páginas, pero sí una página que cubra: qué vendes, a quién le vendes, cómo encuentras clientes, tus precios, costos mensuales y meta de ingresos. Para un préstamo bancario o inversionista, se requiere un plan formal. Para un negocio de servicios independiente, una página clara es suficiente.",
-          },
+        essentials: [
+          { q: "¿Cómo sé si mi idea de negocio es viable?", a: "La prueba más rápida: ¿puedes conseguir que 3 personas te paguen por ello esta semana? Habla con 20 clientes potenciales antes de construir cualquier cosa. Un cliente que paga es la única validación real." },
+          { q: "¿Necesito un plan de negocios?", a: "No un documento de 30 páginas, pero sí una página: qué vendes, quién lo compra, cómo encuentras clientes, tus precios, costos mensuales y meta de ingresos. Para un préstamo bancario o inversionista, se requiere un plan formal." },
+          { q: "¿Cuándo debo dejar mi trabajo de tiempo completo?", a: "Cuando tu negocio secundario genere consistentemente el 75–100% de tu salario neto durante 3+ meses consecutivos Y tengas 6 meses de gastos de vida ahorrados." },
+          { q: "¿Estoy construyendo un negocio o solo un empleo?", a: "Un empleo requiere tu presencia personal. Un negocio tiene sistemas y personas que generan ingresos sin que hagas todo tú. Construye ingresos recurrentes y documenta procesos para hacer la transición." },
+          { q: "¿Cuál es la diferencia entre un lanzamiento suave y uno completo?", a: "Un lanzamiento suave es un lanzamiento limitado para recopilar retroalimentación antes de ir ampliamente. Un lanzamiento completo es un anuncio público y comercializado. La mayoría de los negocios deberían hacer un lanzamiento suave primero." },
+        ],
+        advanced: [
+          { q: "¿Qué es el costo de adquisición de clientes (CAC) y el valor de vida (LTV)?", a: "CAC = gasto total en marketing ÷ nuevos clientes adquiridos. LTV = ingresos promedio por cliente × vida útil promedio del cliente. El LTV debe ser al menos 3 veces el CAC para un negocio sostenible." },
+          { q: "¿Cuándo tiene sentido tomar inversión externa vs. autofinanciar?", a: "Autofinancia cuando puedes crecer rentablemente sin capital. Busca inversión cuando tu mercado requiere velocidad o capital para desbloquear el crecimiento. La mayoría de los pequeños negocios de servicios nunca necesitan inversión externa." },
+          { q: "¿Qué es una estrategia de salida y por qué importa ahora?", a: "Opciones de salida: vender el negocio, pasarlo a un familiar, traer un socio, o cerrarlo. Pensar en la salida temprano da forma a cómo construyes — los negocios con sistemas documentados e ingresos recurrentes valen mucho más." },
+          { q: "¿Cómo evalúo si agregar un nuevo producto o servicio?", a: "Pregunta: ¿Sirve a mis clientes existentes? ¿Puedo entregarlo rentablemente? ¿Requiere nuevas habilidades? ¿Distrae de mi núcleo? Las mejores expansiones sirven al mismo cliente con una oferta complementaria." },
+        ],
+      },
+      {
+        id: "taxes", tier: "advanced",
+        icon: "⊕", label: "Impuestos y Contabilidad", color: "#E8874A", bg: "#130D07",
+        desc: "Deducciones, declaraciones, contabilidad, auditorías",
+        essentials: [
+          { q: "¿Cuál es la diferencia entre un contador y un CPA?", a: "Un contador registra transacciones financieras diarias. Un CPA interpreta esos registros, prepara declaraciones de impuestos, proporciona planificación fiscal estratégica y te representa en una auditoría. La mayoría de los pequeños negocios se benefician de ambos — un contador mensualmente y un CPA anualmente." },
+          { q: "¿Cómo rastro los gastos del negocio durante todo el año?", a: "Usa software de contabilidad y conéctalo a tu cuenta bancaria y tarjeta de crédito empresarial. Toma fotos de los recibos con aplicaciones como Expensify. Revisa y concilia mensualmente." },
+          { q: "¿Qué es la deducción por oficina en casa y cómo califico?", a: "Calificas si usas una parte de tu hogar regular y exclusivamente para negocios. Puedes deducir: método simplificado ($5/pie cuadrado, máximo 300 pies = $1,500 máximo) o gastos reales (% del hogar usado para negocios × gastos totales del hogar)." },
+          { q: "¿Qué registros necesito guardar y por cuánto tiempo?", a: "Declaraciones de impuestos: guárdalas para siempre. Documentos de respaldo (recibos, estados de cuenta): 7 años. Registros de empleados: 7 años después de la terminación. Contratos y documentos legales: indefinidamente." },
+          { q: "¿Qué pasa si me auditan?", a: "Una auditoría no es culpa automática. Responde prontamente con documentación. No ignores los avisos del IRS. Si escala a una auditoría en persona, contrata a un CPA o abogado fiscal para representarte. La mejor defensa: registros limpios mantenidos durante todo el año." },
+        ],
+        advanced: [
+          { q: "¿Cuál es la diferencia entre contabilidad de caja y acumulación?", a: "Contabilidad de caja: registra ingresos cuando recibes el pago, gastos cuando los pagas. Simple, usada por la mayoría de los pequeños negocios. Contabilidad de acumulación: registra ingresos cuando se ganan y gastos cuando se incurren, independientemente de cuándo se mueve el efectivo." },
+          { q: "¿Puedo deducir mi auto si lo uso para negocios?", a: "Sí. Dos métodos: tasa de millaje estándar (67 centavos/milla en 2024) o método de gastos reales (% de uso empresarial × costos totales del auto). El millaje estándar es más simple. Debes llevar un registro de millaje con fecha, destino y propósito comercial." },
+          { q: "¿Qué es un pago de impuestos estimados trimestral?", a: "Si esperas deber $1,000+ en impuestos, debes pagar trimestralmente (15 de abril, 15 de junio, 15 de septiembre, 15 de enero). Los pagos faltantes generan una penalización por pago insuficiente." },
+          { q: "¿Cuáles son los errores fiscales comunes de los pequeños empresarios?", a: "Errores principales: no rastrear gastos durante el año, mezclar finanzas personales y empresariales, perder pagos trimestrales, no deducir todos los gastos legítimos y no contribuir a una cuenta de retiro (SEP-IRA o Solo 401k)." },
+        ],
+      },
+      {
+        id: "hiring", tier: "advanced",
+        icon: "◎", label: "Contratación y RRHH", color: "#5BA89B", bg: "#071110",
+        desc: "Empleados, contratistas, incorporación, cultura",
+        essentials: [
+          { q: "¿Qué papeleo necesito para incorporar a un nuevo empleado?", a: "Requerido: I-9 (autorización de trabajo), W-4 (retención de impuestos), autorización de depósito directo y reconocimiento del manual del empleado. Configura la nómina a través de Gusto, ADP o QuickBooks Payroll." },
+          { q: "¿Cómo creo una descripción de trabajo que atraiga a la persona correcta?", a: "Lidera con resultados, no solo con deberes. Incluye: habilidades requeridas, rango de compensación (los listados con rangos salariales obtienen 30% más candidatos), potencial de crecimiento y 2–3 oraciones honestas sobre tu cultura." },
+          { q: "¿Cuáles son las reglas sobre el pago de horas extra?", a: "Bajo la ley federal, los empleados no exentos deben recibir 1.5 veces su tarifa regular por horas superiores a 40/semana. Los empleados exentos (asalariados que ganan $684+/semana en roles calificados) no tienen derecho a horas extra." },
+          { q: "¿Cómo despido a alguien profesional y legalmente?", a: "Documenta los problemas de rendimiento con advertencias escritas antes del despido. Da razones claras y específicas. Ten un testigo presente. Devuelve artículos personales y revoca el acceso al sistema el mismo día." },
+          { q: "¿Cuál es la diferencia entre un contratista y un empleado?", a: "Contratistas: establecen sus propios horarios, usan sus propias herramientas, manejan sus propios impuestos. Empleados: tú controlas cómo/cuándo/dónde trabajan, retienes impuestos, pagas impuestos de nómina del empleador (7.65%). La clasificación incorrecta es una violación grave." },
+        ],
+        advanced: [
+          { q: "¿Cómo construyo una cultura de equipo sólida?", a: "La cultura es lo que toleras y lo que celebras. Define 3–5 valores fundamentales con ejemplos de comportamiento específicos. Contrata para ajuste de valores, no solo habilidades. La cultura se degrada cuando los líderes hacen excepciones para los de alto rendimiento que violan los valores." },
+          { q: "¿Puedo requerir un acuerdo de no competencia?", a: "Depende en gran medida de tu estado. California, Minnesota y otros estados en gran medida prohíben los no competencia. En los estados que los permiten, deben ser razonables en duración (6–12 meses), geografía y alcance." },
+          { q: "¿Qué debe cubrir un manual del empleado?", a: "Como mínimo: declaración de empleo a voluntad, políticas antidiscriminación y acoso, políticas de tiempo libre, expectativas de asistencia, confidencialidad y política de redes sociales. Actualízalo anualmente." },
+          { q: "¿Cómo evito que los buenos empleados se vayan?", a: "Las razones principales por las que se van: malos gerentes, sin trayectoria de crecimiento, sentirse infravalorado y compensación por debajo del mercado. Soluciones: reuniones 1:1 regulares, criterios de promoción claros, compensación competitiva revisada anualmente." },
+        ],
+      },
+      {
+        id: "ecommerce", tier: "advanced",
+        icon: "⬗", label: "E-Commerce y Online", color: "#A87CC4", bg: "#0E0913",
+        desc: "Venta en línea, plataformas, cumplimiento",
+        essentials: [
+          { q: "¿Qué plataforma debo usar para vender en línea?", a: "Etsy: mejor para productos artesanales o de nicho — audiencia incorporada pero alta competencia y comisiones. Shopify: mejor para construir tu propia tienda de marca — $29–$79/mes, requiere tu propio marketing. Comienza en Etsy o Shopify dependiendo de si quieres una audiencia existente o control de marca." },
+          { q: "¿Cómo manejo devoluciones y reembolsos?", a: "Escribe una política clara y justa antes de tu primera venta. Estándar: 30 días de devolución para artículos sin usar en condición original. Sé más generoso de lo que crees necesitar — los clientes verifican las políticas de devolución antes de comprar." },
+          { q: "¿Cómo consigo mis primeros 100 clientes en línea?", a: "No comiences con anuncios. Empieza publicando en grupos relevantes de Facebook y Reddit, contactando tu red personal, asociándote con creadores complementarios y optimizando tus listados de productos para búsqueda." },
+          { q: "¿Qué son los contracargos y cómo los prevengo?", a: "Un contracargo es cuando un cliente disputa un cargo con su banco. Prevénlos con: descripciones claras de productos con fotos, confirmaciones de pedido, números de seguimiento, política de reembolso visible y respondiendo a quejas antes de que escalen." },
+          { q: "¿Cómo manejo el impuesto a las ventas al vender en múltiples estados?", a: "Desde 2018, puedes deber impuesto sobre ventas en estados donde tienes nexo económico (típicamente $100,000 en ventas o 200 transacciones). Usa TaxJar o Avalara para automatizar el cálculo y la presentación." },
+        ],
+        advanced: [
+          { q: "¿Cómo protejo mi producto o marca en línea?", a: "Registra tu marca ($250–$350 vía USPTO). Configura alertas de Google para el nombre de tu marca. Usa el proceso de eliminación DMCA para infracciones de derechos de autor. En Amazon, inscríbete en Brand Registry." },
+          { q: "¿Cuál es la mejor manera de fijar precios para una tienda en línea?", a: "Fórmula: (Costo del producto + envío + tarifas de plataforma + procesamiento de pagos) × margen deseado. Para productos físicos, apunta a 3–5 veces tu costo total como precio minorista." },
+          { q: "¿Cómo obtengo más reseñas de productos?", a: "Envía un correo de seguimiento 7–14 días después de la entrega pidiendo una reseña honesta. Nunca incentives ni compres reseñas — las plataformas lo detectan activamente. Los productos con 10+ reseñas convierten dramáticamente mejor." },
+        ],
+      },
+      {
+        id: "credit", tier: "advanced",
+        icon: "⊞", label: "Crédito y Banca Empresarial", color: "#7BBFA0", bg: "#081210",
+        desc: "Crédito, préstamos, banca, SBA",
+        essentials: [
+          { q: "¿Cómo construyo crédito empresarial separado de mi crédito personal?", a: "Paso 1: Forma una LLC. Paso 2: Obtén un EIN. Paso 3: Abre una cuenta bancaria y tarjeta de crédito empresarial. Paso 4: Regístrate con burós de crédito empresarial. Paso 5: Paga todas las facturas empresariales antes o a tiempo." },
+          { q: "¿Cuál es la diferencia entre una tarjeta de crédito empresarial y una línea de crédito?", a: "Tarjeta de crédito: crédito renovable para gastos diarios. Línea de crédito: montos mayores ($10k–$250k+), toma lo que necesitas, pagas intereses solo sobre lo que usas. Mejor para brechas de flujo de caja y gastos irregulares más grandes." },
+          { q: "¿Qué buscan los bancos al aprobar un préstamo empresarial?", a: "Las 5 C: Carácter (tu historial crediticio), Capacidad (capacidad de pago), Capital (tu inversión en el negocio), Colateral (activos para garantizar el préstamo) y Condiciones. La mayoría de los bancos quieren 2+ años en negocios, $100k+ en ingresos anuales y 680+ de puntaje crediticio personal." },
+          { q: "¿Qué es un préstamo SBA y cómo califico?", a: "Los préstamos SBA son préstamos respaldados por el gobierno con términos favorables. Más populares: SBA 7(a) hasta $5M. Requisitos: 2+ años en negocios, buen crédito, garantía colateral y capacidad demostrada de pago." },
+          { q: "¿Cuánto dinero en reserva debe tener un negocio?", a: "Mínimo: 3 meses de gastos operativos en una cuenta de ahorros dedicada. Meta: 6 meses. Esto cubre nómina, alquiler y facturas durante un período lento sin endeudarse." },
+        ],
+        advanced: [
+          { q: "¿Cuándo debo considerar financiamiento externo vs. autofinanciar?", a: "Autofinancia cuando puedes crecer rentablemente sin capital. Busca financiamiento cuando tu mercado se mueve rápido o el capital desbloquea directamente el crecimiento. La mayoría de los pequeños negocios de servicios nunca necesitan inversión externa." },
+          { q: "¿Qué es una garantía personal en un préstamo empresarial?", a: "Una garantía personal significa que si tu negocio no puede pagar el préstamo, eres personalmente responsable. Casi todos los préstamos SBA requieren una. Entiende lo que estás firmando antes de acordar." },
+          { q: "¿Cómo preparo los estados financieros de mi negocio para una reunión bancaria?", a: "Lleva: últimas 2 declaraciones de impuestos empresariales, últimas 2 declaraciones personales, P&G y balance general hasta la fecha, 3 meses de estados de cuenta bancarios y una explicación escrita de cómo usarás y pagarás los fondos." },
+        ],
+      },
+      {
+        id: "socialmedia", tier: "advanced",
+        icon: "◑", label: "Redes Sociales y Digital", color: "#6A9ED4", bg: "#080F16",
+        desc: "SEO, plataformas sociales, contenido, anuncios",
+        essentials: [
+          { q: "¿En qué plataforma de redes sociales debo enfocarme?", a: "Elige según dónde estén realmente tus clientes. B2B o servicios profesionales: LinkedIn. Productos visuales: Instagram y Pinterest. Negocios locales: Facebook. Audiencias más jóvenes: TikTok. No intentes estar en todos lados a la vez." },
+          { q: "¿Qué es el SEO y realmente lo necesita un pequeño negocio?", a: "El SEO hace que tu sitio web aparezca en los resultados de búsqueda de Google. Básicos: reclama tu Perfil de Google Business (gratis), agrega tu negocio a directorios relevantes, asegúrate de que tu sitio mencione claramente tu ciudad y servicios, y obtén reseñas de clientes en Google." },
+          { q: "¿Con qué frecuencia debo publicar en redes sociales?", a: "La consistencia supera a la frecuencia. Un horario sostenible realista: LinkedIn 3x/semana, Instagram 4x/semana, TikTok 5x/semana. Es mejor publicar 3 veces a la semana de manera confiable durante un año que diariamente durante dos semanas y luego quedarse en silencio." },
+          { q: "¿Debo usar anuncios de pago o enfocarme en el crecimiento orgánico primero?", a: "Orgánico primero — siempre. Valida tu mensaje y oferta con contenido orgánico antes de gastar dinero para amplificarlo. La mayoría de los negocios desperdician su primer presupuesto publicitario antes de entender qué resuena." },
+          { q: "¿Qué es un calendario de contenido y lo necesito?", a: "Un calendario de contenido es un horario planificado de lo que publicarás. Sí lo necesitas — incluso una hoja de cálculo simple funciona. Planifica un mes a la vez. Crea contenido en lotes un día a la semana en lugar de apresurarte diariamente." },
+        ],
+        advanced: [
+          { q: "¿Cómo ejecuto un anuncio de Facebook o Instagram con un presupuesto pequeño?", a: "Comienza con $10–$20/día durante 7–14 días para recopilar datos. Segmenta por interés + comportamiento. Prueba 3–5 variaciones de anuncios. No cambies los anuncios a mitad de prueba. Mide el costo por clic y por cliente potencial, no solo impresiones." },
+          { q: "¿Qué tipo de contenido realmente construye una audiencia?", a: "Contenido que educa, entretiene o inspira a tu nicho específico. Regla 80/20: 80% contenido de valor (consejos, detrás de escena, lecciones aprendidas), 20% promocional. Para negocios de servicios, mostrar tu proceso genera más confianza que contenido promocional pulido." },
+          { q: "¿Cómo crezco en LinkedIn como dueño de pequeño negocio?", a: "Publica desde tu perfil personal, no solo la página de empresa — las cuentas personales obtienen 10 veces más alcance. Comparte opiniones y lecciones, no solo información. Conéctate con 5–10 clientes ideales por semana con notas personalizadas." },
+          { q: "¿Qué es el SEO local y cómo aparezco más alto en Google Maps?", a: "El SEO local hace que tu negocio aparezca en el 'paquete de mapas' de Google. Pasos clave: reclama y completa tu Perfil de Google Business, obtén reseñas de Google consistentes, agrega fotos regularmente y publica actualizaciones semanales en Google Business." },
+        ],
+      },
+      {
+        id: "clients", tier: "advanced",
+        icon: "⬖", label: "Relaciones con Clientes", color: "#C49A6C", bg: "#130F08",
+        desc: "Propuestas, incorporación, retención, disputas",
+        essentials: [
+          { q: "¿Cómo escribo una propuesta que realmente gana clientes?", a: "Lidera con su problema, no con tus credenciales. Estructura: (1) reformula su situación, (2) tu solución propuesta con entregables específicos y cronograma, (3) inversión (precio), (4) credenciales relevantes breves. Da seguimiento dentro de las 48 horas." },
+          { q: "¿Cómo manejo el scope creep?", a: "Previenlo con un contrato claro que defina los entregables explícitamente. Cuando suceda: reconoce la solicitud positivamente, luego referencia el alcance acordado y ofrece una orden de cambio con costo adicional. Nunca hagas trabajo extra gratis más de una vez." },
+          { q: "¿Cómo termino la relación con un cliente profesionalmente?", a: "Da 30 días de aviso por escrito. Mantenlo profesional: 'He determinado que este compromiso no es el ajuste correcto.' Completa los entregables pendientes por los que ya te pagaron. Documenta todo por si hay disputas." },
+          { q: "¿Cómo debe ser el proceso de incorporación de un cliente?", a: "Una buena incorporación: (1) contrato firmado y depósito recibido, (2) correo de bienvenida, (3) cuestionario de admisión o llamada de inicio, (4) establecer expectativas de comunicación, (5) compartir cronograma del proyecto con hitos." },
+          { q: "¿Cómo obtengo un testimonio o caso de estudio de un cliente satisfecho?", a: "Pregunta dentro de una semana de entregar excelentes resultados. Facilítalo: envía 3 preguntas específicas. Para casos de estudio, pregunta si puedes escribirlo y que ellos lo aprueben. Usa resultados y números donde sea posible." },
+        ],
+        advanced: [
+          { q: "¿Cómo subo mis tarifas con clientes existentes?", a: "Da 60–90 días de aviso por escrito. Enmárcalo en torno al mayor valor, no en necesidades personales. La mayoría de los clientes esperan aumentos anuales de tarifas — solo es incómodo si lo haces incómodo." },
+          { q: "¿Cuál es la mejor manera de dar seguimiento a prospectos sin ser molesto?", a: "La regla 1–3–7–14–30: da seguimiento 1 día, 3 días, 7 días, 14 días, luego 30 días después del contacto inicial. Cada seguimiento debe agregar valor. Después de 5 intentos sin respuesta, envía un correo de despedida." },
+          { q: "¿Cómo creo un programa de referencias?", a: "Mantenlo simple: define la recompensa, establece términos claros, crea una página de destino de una página explicando el programa y envía un correo a todos los clientes actuales y pasados para anunciarlo." },
+          { q: "¿Cómo construyo relaciones duraderas con clientes que generen negocios repetidos?", a: "Mantente en contacto entre proyectos: comparte un artículo relevante, haz un seguimiento trimestral. Crea una llamada de revisión anual para discutir sus resultados y necesidades futuras. Los clientes que te dan más trabajo son los que tratas como VIPs." },
         ],
       },
     ],
