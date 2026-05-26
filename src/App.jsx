@@ -98,6 +98,28 @@ export default function SmallBizAdvisor() {
     if (searchOpen) setTimeout(() => searchRef.current?.focus(), 50);
   }, [searchOpen]);
 
+  useEffect(() => {
+  window.history.replaceState({ view: "home", categoryId: null }, "", "/");
+
+  const handlePop = (e) => {
+    const state = e.state;
+    if (!state) { setView("home"); setActiveCategory(null); return; }
+    setView(state.view || "home");
+    if (state.categoryId) {
+      const found = translations[lang].categories.find(c => c.id === state.categoryId);
+      if (found) setActiveCategory(found);
+    } else {
+      setActiveCategory(null);
+    }
+    setExpandedEss(null);
+    setExpandedAdv(null);
+    window.scrollTo(0, 0);
+  };
+
+  window.addEventListener("popstate", handlePop);
+  return () => window.removeEventListener("popstate", handlePop);
+}, [lang]);
+
   // Search results
   const searchResults = searchQuery.trim().length > 1
     ? allFaqs.filter(f =>
@@ -140,13 +162,29 @@ export default function SmallBizAdvisor() {
     } catch { setContactStatus("error"); }
     setContactSending(false);
   };
+ // ── Browser history sync ──────────────────────────
+const navigate = (newView, cat = null) => {
+  const path =
+    newView === "home"     ? "/" :
+    newView === "category" ? `/topic/${cat?.id}` :
+    `/${newView}`;
+  window.history.pushState({ view: newView, categoryId: cat?.id || null }, "", path);
+  setView(newView);
+  if (cat) setActiveCategory(cat);
+  else setActiveCategory(null);
+  setMenuOpen(false);
+  window.scrollTo(0, 0);
+};
 
-  const openCategory = (cat) => {
-    setActiveCategory(cat); setExpandedEss(null); setExpandedAdv(null); setView("category");
-  };
-  const goHome  = () => { setView("home"); setActiveCategory(null); setMenuOpen(false); };
-  const openChat = (prefill) => { setView("chat"); setMenuOpen(false); if (prefill) setTimeout(() => sendMessage(prefill), 100); };
-  const navTo   = (v) => { setView(v); setMenuOpen(false); };
+const openCategory = (cat) => {
+  setExpandedEss(null); setExpandedAdv(null); navigate("category", cat);
+};
+const goHome  = () => navigate("home");
+const openChat = (prefill) => {
+  navigate("chat");
+  if (prefill) setTimeout(() => sendMessage(prefill), 100);
+};
+const navTo = (v) => navigate(v);
 
   // ── Shared button styles
   const btnPrimary = { border:"none", borderRadius:8, padding:"12px 22px", fontSize:14, fontWeight:"700", cursor:"pointer", fontFamily:"inherit", background:th.accent, color: isDark ? "#0C0C0F" : "#FFFFFF", transition:"transform 0.15s, box-shadow 0.15s" };
